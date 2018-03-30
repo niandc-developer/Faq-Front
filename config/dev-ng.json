@@ -1,0 +1,14 @@
+{
+  "api": {
+    "apiKey": "<input_your_apikey>",
+    "faqApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/faq",
+    "feedApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/feedback",
+    "checkApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/check",
+    "faqdocApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/faqdoc",
+    "fbApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/fbdoc",
+    "trainApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/train",
+    "adminApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/user",
+    "loginApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/login",
+    "analyticsApi": "https://<input_your_node-red_url>.mybluemix.net/api/v1/analytics"
+  }
+}

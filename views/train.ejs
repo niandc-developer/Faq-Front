@@ -1,0 +1,205 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHead') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="page-header">初期FAQデータアップロード</h4>
+            <p class="help-block">初期FAQデータをシステムにアップロードします(Watsonには登録されません)</p>
+              <form role="form" name="form" method="post" enctype="multipart/form-data">
+                <!-- security setting -->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="form-group">
+                  <% if(faqStatus['status'] === 'exec'){ %>
+                      <button type="submit" class="btn btn-outline btn-danger disabled"
+                        disabled>処理実行中</button>
+                      <p class="text-warning">学習・登録処理が実行されております。しばらく経ってからアクセスして下さい</p>
+                  <% }else{ %>
+                      <input type="file" name="uploadFile">
+                      <button type="submit" class="btn btn-outline btn-default"
+                        formaction="/train/upload">アップロード</button>
+                  <% } %>
+                </div>
+              </form>
+            <h4 class="page-header">WatsonへFAQデータを登録</h4>
+              <form role="form" name="form" method="post">
+                <% if(faqStatus['status'] === 'exec'){ %>
+                  <button type="submit" class="btn btn-outline btn-danger disabled" disabled>処理実行中</button>
+                  <p class="text-warning">学習・登録処理が実行されております。しばらく経ってからアクセスして下さい</p>
+                <% }else{ %>
+                  <!-- security setting -->
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#myModal">
+                    FAQ登録
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                   aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">警告</h4>
+                        </div>
+                        <div class="modal-body">
+                          登録を行うと現在Watsonが保持しているデータは削除されます</br>
+                          登録前のデータへ復元が必要な場合はFAQデータのメンテナンス画面にて事前にエクスポートを行いましょう</br>
+                          本当にWatsonへ登録を行いますか？
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                          <button type="submit" class="btn btn-success" formaction="/train/faqdoc">Watsonへ登録</button>
+                        </div>
+                      </div>
+                    <!-- /modal-content -->
+                    </div>
+                  <!-- /modal-dialog -->
+                  </div>
+                <% } %>
+              </form>
+            <h4 class="page-header">Watsonへ学習開始依頼</h4>
+              <form role="form" name="form" method="post">
+                <% if(faqStatus['status'] === 'exec'){ %>
+                  <button type="submit" class="btn btn-outline btn-danger disabled" disabled>処理実行中</button>
+                  <p class="text-warning">学習・登録処理が実行されております。しばらく経ってからアクセスして下さい</p>
+                <% }else{ %>
+                  <!-- security setting -->
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="button" class="btn btn-outline btn-primary" data-toggle="modal"
+                   data-target="#myModal2">
+                    学習開始
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                   aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel2">警告</h4>
+                        </div>
+                        <div class="modal-body">
+                          WatsonはFAQデータとフィードバックデータを基に学習を開始します。</br>
+                          データ容量により学習完了には数時間～1日掛かる可能性があります。</br>
+                          本当に学習を開始しますか？
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                          <button type="submit" class="btn btn-primary" formaction="/train/fbdoc">学習開始</button>
+                        </div>
+                      </div>
+                    <!-- /modal-content -->
+                    </div>
+                  <!-- /modal-dialog -->
+                  </div>
+                <% } %>
+              </form>
+            <h4 class="page-header">Watson Status</h4>
+              <div class="col-lg-12">
+                <div class="table-responsive">
+                  <p>20秒間隔で状況を自動更新しています</p>
+                  <table id="statusTable" width="100%" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>項目</th>
+                        <th>状況</th>
+                        <th class="col-lg-8">備考</th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <% if(docCounts['processing'] === 0){ %>
+                            <td>FAQデータ</br>登録状況</td>
+                            <td id="docProcessing">停止中</td>
+                            <td>「停止中」:登録処理は停止しています。処理が完了した場合も「停止中」と表示されます</br>
+                                「実行中」:登録処理が実行されています</br>
+                          <% } else { %>
+                            <td>FAQデータ</br>登録状況</td>
+                            <td id="docProcessing">実行中</td>
+                            <td>「停止中」:登録処理は停止しています。処理が完了した場合も「停止中」と表示されます</br>
+                                「実行中」:登録処理が実行されています</br>
+                          <% } %>
+                        </tr>
+                        <tr>
+                          <% if(trainStatus['processing'] === false){ %>
+                            <td>学習処理</br>実行状況</td>
+                            <td id="trainProcessing">停止中</td>
+                            <td>「停止中」:学習処理は停止しています。学習処理が完了した場合も「停止中」と表示されます</br>
+                                「実行中」:学習処理が実行されています</br>
+                                ※:「学習開始」ボタンをクリック後、「実行中」になるまで数時間～最大1日かかります</td>
+                          <% } else { %>
+                            <td>学習処理</br>実行状況</td>
+                            <td id="trainProcessing">実行中</td>
+                            <td>「停止中」:学習処理は停止しています。学習処理が完了した場合も「停止中」と表示されます</br>
+                                「実行中」:学習処理が実行されています</br>
+                                ※:「学習開始」ボタンをクリック後、「実行中」になるまで数時間～最大1日かかります</td>
+                          <% } %>
+                        <tr>
+                          <td>学習処理</br>最新完了日時</td>
+                          <td id="successfully_trained"><%= trainStatus['successfully_trained'] %></td>
+                          <td>Watsonが学習処理を正常に完了した日時を米国時間で表示</td>
+                        </tr>
+                        <tr>
+                          <% if(trainStatus['successfully_trained'] && trainStatus['available'] === true){ %>
+                            <td>学習モデル</br>最新ステータス</td>
+                            <td id="trainAvailable">使用可能</td>
+                            <td>使用可能:最新の学習モデルは使用可能な状態です</br>
+                                使用不可能：学習が失敗しています。フィードバックデータ修正後、再度学習を開始して下さい</br>
+                                ※「使用可能」な場合、学習モデルは自動的に検索結果に反映されます</td>
+                          <% } else if(trainStatus['successfully_trained'] && trainStatus['available'] === false) { %>
+                            <td>学習モデル</br>最新ステータス</td>
+                            <td id="trainAvailable">使用不可能</td>
+                            <td>使用可能:最新の学習モデルは使用可能な状態です</br>
+                                使用不可能：学習が失敗しています。フィードバックデータ修正後、再度学習を開始して下さい</br>
+                                ※「使用可能」な場合、学習モデルは自動的に検索結果に反映されます</td>
+                          <% } else { %>
+                            <td>学習モデル</br>最新ステータス</td>
+                            <td id="trainAvailable"></td>
+                            <td>使用可能:最新の学習モデルは使用可能な状態です</br>
+                                使用不可能：学習が失敗しています。フィードバックデータ修正後、再度学習を開始して下さい</br>
+                                ※「使用可能」な場合、学習モデルは自動的に検索結果に反映されます</td>
+                          <% } %>
+                        </tr>
+                      </tbody>
+                  </table>
+                  <p id="error"></p>
+                </div>
+              </div>
+          </div>
+        <!-- /row -->
+        </div>
+      <!-- /container-fluid -->
+      </div>
+    <!-- /page-wrapper -->
+    </div>
+  <!-- /wrapper -->
+  </div>
+  <%- include('./common/commonScripts') %>
+  <%- include('./common/commonScriptsValidate') %>
+  <%- include('./common/commonScriptTrainStatus') %>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHead') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header"><%= body['userid'] %> 編集画面</h3>
+          </div>
+          <div class="col-lg-6">
+            <form role="form" name="form" method="post" autocomplete="off">
+              <!-- security setting -->
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <div class="form-group">
+                <label>権限</label>
+                  <% if (body['group'][0] === 'user') {%>
+                    <p>FAQ権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="user">On</option>
+                      <option value="off">Off</option>
+                    </select>
+                  <%} else {%>
+                    <p>FAQ権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="off">Off</option>
+                      <option value="user">On</option>
+                    </select>
+                  <%}%>
+                  <% if (body['group'][1] === 'maint') {%>
+                    <p>メンテナンス権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="maint">On</option>
+                      <option value="off">Off</option>
+                    </select>
+                  <%} else {%>
+                    <p>メンテナンス権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="off">Off</option>
+                      <option value="maint">On</option>
+                    </select>
+                  <%}%>
+                  <% if (body['group'][2] === 'admin') {%>
+                    <p>管理権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="admin">On</option>
+                      <option value="off">Off</option>
+                    </select>
+                  <%} else {%>
+                    <p>管理権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="off">Off</option>
+                      <option value="admin">On</option>
+                    </select>
+                  <%}%>
+                <label>パスワード(強制変更)</label>
+                  <input type="password" class="form-control" name="newPassword1" value="nochange"/>
+                  <p class="help-block">強制変更を行う場合、フォームの値を削除して新しいパスワードを入力して下さい</p>
+              </div>
+              <p>
+                <button type="submit" class="btn btn-info" formaction="./update" name="userid"
+                 value="<%= body['userid'] %>">更新</button>
+                <a href="/admin" class="btn btn-warning" role="button">戻る</a>
+              </p>
+              <% if (typeof result !== 'undefined' && result === 'success') { %>
+                <p class="text-success">Success update</p>
+              <% }; %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('./common/commonScripts') %>
+  <%- include('./common/commonScriptsValidate') %>
+</body>
+</html>

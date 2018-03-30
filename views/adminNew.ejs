@@ -1,0 +1,76 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHead') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-header">ユーザ新規登録画面</h1>
+          </div>
+          <div class="col-lg-6">
+            <form role="form" name="form" method="post">
+              <!-- security setting -->
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <div class="form-group">
+                <label>ユーザ名</label>
+                  <input class="form-control" name="userid" value="">
+                <label>権限</label>
+                  <p>ユーザ権限</p>
+                  <select class="form-control" name="group[]">
+                    <option value="user">On</option>
+                    <option value="off">Off</option>
+                    </select>
+                  <p>メンテナンス権限</p>
+                  <select class="form-control" name="group[]">
+                      <option value="maint">On</option>
+                      <option value="off">Off</option>
+                  </select>
+                  <p>管理者権限</p>
+                    <select class="form-control" name="group[]">
+                      <option value="admin">On</option>
+                      <option value="off">Off</option>
+                    </select>
+                <label>パスワード</label>
+                  <input type="password" class="form-control" name="password" value=""/>
+              </div>
+              <p>
+                <button type="submit" class="btn btn-info" formaction="./regist">登録</button>
+                <a href="/admin" class="btn btn-warning" role="button">戻る</a>
+              <p>
+              <% if (typeof result !== "undefined" && result === "conflict") { %>
+                <p class="text-danger">既にユーザは登録されております。別のユーザ名を指定して登録して下さい。</p>
+              <% }else if (typeof result !== "undefined" && result === "success") { %>
+                <p class="text-success">New user registration success</p>
+              <% }; %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('./common/commonScripts') %>
+  <%- include('./common/commonScriptsValidate') %>
+</body>
+</html>

@@ -1,0 +1,85 @@
+  <!-- nav -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <!-- bootstrap specification -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" style="padding:0;"><img src="../images/logo.png" alt="logo" align="top"></a>
+    </div>
+    <!-- navbar-top-links  -->
+    <ul class="nav navbar-top-links navbar-right">
+      <!-- top-links user dropdown -->
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+          <li>
+            <a href="/password">
+              <div>
+                <i class="fa fa-exchange fa-fw"></i> パスワード変更
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/logout">
+              <div>
+                <i class="fa fa-sign-out fa-fw"></i> ログアウト
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /top-links user dropdown-->
+      </li>
+      <!-- /navbar-top-links -->
+    </ul>
+    <!-- navbar-side-links  -->
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+          <%# ユーザの権限によって表示するメニューを制限 %>
+          <% if (group[0] === 'user') { %>
+          <li>
+            <a href="/faq"><i class="fa fa-comments fa-fw"></i> FAQ</a>
+          </li>
+          <% } %>
+          <%if (group[1] === 'maint') { %>
+          <li>
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> メンテナンス<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="/train"><i class="fa fa-mortar-board fa-fw"></i> アップロード&学習</a>
+              </li>
+              <li>
+                <a href="/qa"><i class="fa fa-wrench fa-fw"></i> FAQデータ</a>
+              </li>
+              <li>
+                <a href="/fb"><i class="fa fa-wrench fa-fw"></i> フィードバックデータ</a>
+              </li>
+            </ul>
+          </li>
+          <% } %>
+          <% if (group[2] === 'admin') { %>
+          <li>
+            <a href="#"><i class="fa fa-briefcase fa-fw"></i> 管理<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="/admin"><i class="fa fa-briefcase fa-fw"></i> ユーザ</a>
+              </li>
+              <li>
+                <a href="/analytics"><i class="fa fa-briefcase fa-fw"></i> 分析</a>
+              </li>
+            </ul>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <!-- /navbar-side-links  -->
+    </div>
+    <!-- /nav -->
+  </nav>

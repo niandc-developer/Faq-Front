@@ -1,0 +1,8 @@
+applications:
+- name: <input_your_faqweb_name>
+  memory: 1G
+  disk_quota: 2G
+  host: <input_your_faqweb_name>
+  env:
+   NODE_ENV: dev-ng
+   HTTPS_ENABLE: on

@@ -1,0 +1,84 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHead') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header">FAQ-ID:<%= body['id'] %> 編集画面</h3>
+          </div>
+          <div class="col-lg-6">
+            <form role="form" name="form" method="post">
+              <!-- security setting -->
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <div class="form-group">
+                <label>質問</label>
+                  <textarea class="form-control" rows="2" name="question"
+                   value="<%= body['question'] %>"><%= body['question'] %></textarea>
+                <label>回答</label>
+                  <textarea class="form-control" rows="4" name="answer"
+                   value="<%= body['answer'] %>"><%= body['answer'] %></textarea>
+                <label>URL(オプション)</label>
+                  <textarea class="form-control" rows="2" name="url"
+                   value="<%= body['url'] %>"><%= body['url'] %></textarea>
+                <label>ステータス</label>
+                  <% if (body['flag'] == 0) {%>
+                    <select class="form-control" name="flag">
+                      <option value="0">無効</option>
+                      <option value="2">有効(追加登録データ)</option>
+                  <%} else if(body['flag'] == 1) {%>
+                    <select class="form-control" name="flag">
+                      <option value="1">有効(初期データ)</option>
+                      <option value="0">無効</option>
+                  <%} else if(body['flag'] == 2) {%>
+                    <select class="form-control" name="flag">
+                      <option value="2">有効(追加登録データ)</option>
+                      <option value="0">無効</option>
+                  <%} else if(body['flag'] == 3) {%>
+                    <select class="form-control" name="flag">
+                      <option value="3">有効(ユーザフィードバックデータ)</option>
+                      <option value="0">無効</option>
+                  <%}%>
+                    </select>
+                  <p class="help-block">Onの場合、学習データとして利用されます。Offの場合、学習データとして利用されません。</p>
+              </div>
+              <p>
+                <button type="submit" name="id" value="<%= body['id'] %>" class="btn btn-info"
+                 formaction="./update">更新</button>
+                <a href="/qa" class="btn btn-warning" role="button">戻る</a>
+              </p>
+              <% if (typeof result !== 'undefined' && result === "success") { %>
+                <p class="text-success">Success update</p>
+              <% }; %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('./common/commonScripts') %>
+  <%- include('./common/commonScriptsValidate') %>
+</body>
+</html>

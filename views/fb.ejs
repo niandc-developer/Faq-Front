@@ -1,0 +1,188 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHeadTable') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <%# データのインポート処理が実行されているためメンテナンス画面の機能を停止する %>
+          <% if(faqStatus['status'] === 'exec'){ %>
+            <div class="col-lg-12">
+              <p class="lead text-info">現在データのインポートもしくは学習処理が実行されております。しばらく経ってからアクセスをお願い致します。</p>
+            </div>
+          <% }else{ %>
+            <div class="col-lg-12">
+              <h4 class="page-header">管理</h4>
+            </div>
+            <!-- menu -->
+            <div class="col-lg-12">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-export" data-toggle="tab">Export</a>
+                </li>
+                <li><a href="#tab-import" data-toggle="tab">Import</a>
+                </li>
+                <li><a href="#tab-drop" data-toggle="tab">全データ削除</a>
+                </li>
+              </ul>
+              <!-- tab -->
+              <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab-export">
+                  <label></label>
+                  <form role="form" name="form2" method="get">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-outline btn-default btn-sm"
+                       formaction="/fb/export">Export</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="tab-import">
+                  <label></label>
+                  <form class="form" role="form" name="form" method="post" enctype="multipart/form-data">
+                    <!-- security setting -->
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <div class="form-group">
+                        <div class="btn-group">
+                          <div style="display:inline-flex">
+                            <input type="file" name="importFile">
+                            <button type="submit" class="btn btn-outline btn-default btn-sm"
+                             formaction="/fb/import">Import</button>
+                          </div>
+                        </div>
+                      </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="tab-drop">
+                  <label></label>
+                  <form role="form4" name="form" method="post">
+                    <!-- security setting -->
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                     data-target="#myModalDrop">
+                      全データ削除
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModalDrop" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">警告</h4>
+                          </div>
+                          <div class="modal-body">
+                            全てのフィードバックデータが削除されます。削除されたデータはシステムで復元する事は出来ません</br>
+                            削除前のデータへ復元が必要な場合は事前にエクスポートを行いましょう</br>
+                            本当に削除しますか？
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                            <button type="submit" class="btn btn-danger" formaction="/fb/drop">全データ削除</button>
+                          </div>
+                        </div>
+                        <!-- /modal-content -->
+                      </div>
+                    <!-- /modal-dialog -->
+                    </div>
+                  </form>
+                </div>
+              <!-- /tab -->
+              </div>
+            <!-- /menu -->
+            </div>
+            <!-- modify data -->
+            <div class="col-lg-12">
+              <h4 class="page-header">編集</h4>
+                <form role="form" name="form" method="get">
+                  <div class="form-group">
+                    <button type="submit" type="button" class="btn btn-outline btn-warning btn-sm"
+                      formaction="/fb/new">
+                        いいね情報手動登録
+                    </button>
+                  </div>
+                </form>
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#feed-ans" data-toggle="tab">いいね情報</a>
+                  </li>
+                  <li><a href="#feed-noans" data-toggle="tab">回答無し情報</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade in active" id="feed-ans">
+                    <!-- feedback(Ans) doc editing -->
+                    <form role="form" name="form" method="post">
+                      <!-- security setting -->
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <div class="form-group" id="targetLoad">
+                        <table style="display:none" width="80%" class="table table-bordered table-hover"
+                         id="targetTable2">
+                          <thead>
+                            <tr>
+                              <th class="col-lg-8">質問</th>
+                              <th>回答ID(FAQID)</th>
+                              <th>関連度</th>
+                              <th>編集</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="feed-noans">
+                    <!-- /feedback(NoAns) doc editing -->
+                    <form role="form" name="form" method="post">
+                      <!-- security setting -->
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <div class="form-group" id="targetLoad">
+                        <table style="display:none" width="80%" class="table table-bordered table-hover"
+                         id="targetTable3">
+                          <thead>
+                            <tr>
+                              <th class="col-lg-10">質問</th>
+                              <th>回答</th>
+                              <th>編集</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    <!-- /feedback doc editing -->
+                    </form>
+                  </div>
+                <!-- /tab-content -->
+                </div>
+            <!-- /modify-data -->
+            </div>
+          <% } %>
+        <!-- /row -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('./common/commonScriptsTable') %>
+  <%- include('./common/commonScriptsValidate') %>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHead') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <h4 class="page-header">利用状況</h4>
+          <!-- search count table -->
+          <div class="col-lg-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                検索回数
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th class="col-lg-3">年</th>
+                        <th class="col-lg-3">月</th>
+                        <th class="col-lg-6">回数</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i=0; i<body['search'].length; i++){ %>
+                      <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= body['search'][i]['key'][1] %>年</td>
+                        <td><%= body['search'][i]['key'][2] %>月</td>
+                        <td><%= body['search'][i]['value'] %></td>
+                      </tr>
+                    <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <!-- /search count table -->
+          </div>
+          <!-- feedback(answer) count table -->
+          <div class="col-lg-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                フィードバック(いいね)登録回数
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th class="col-lg-3">年</th>
+                        <th class="col-lg-3">月</th>
+                        <th class="col-lg-6">回数</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i=0; i<body['answer'].length; i++){ %>
+                      <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= body['answer'][i]['key'][1] %>年</td>
+                        <td><%= body['answer'][i]['key'][2] %>月</td>
+                        <td><%= body['answer'][i]['value'] %></td>
+                      </tr>
+                    <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <!-- /feedback(answer) count table -->
+          </div>
+          <!-- feedback(noanswer) count table -->
+          <div class="col-lg-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                フィードバック(回答なし)登録回数
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th class="col-lg-3">年</th>
+                        <th class="col-lg-3">月</th>
+                        <th class="col-lg-6">回数</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i=0; i<body['noanswer'].length; i++){ %>
+                      <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= body['noanswer'][i]['key'][1] %>年</td>
+                        <td><%= body['noanswer'][i]['key'][2] %>月</td>
+                        <td><%= body['noanswer'][i]['value'] %></td>
+                      </tr>
+                    <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <!-- /feedback(answer) count table -->
+          </div>
+        <!-- /row -->
+        </div>
+      <!-- /page-wrapper -->
+      </div>
+    </div>
+  <!-- /wrapper -->
+  </div>
+  <%- include('./common/commonScripts') %>
+</body>
+</html>

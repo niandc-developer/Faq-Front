@@ -1,0 +1,68 @@
+<!--
+/**
+ * Copyright 2018 Nippon Information and Communication. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<%- include('./common/commonHeadTable') %>
+</head>
+<body>
+  <div id="wrapper">
+    <%- include('./common/commonNavi') %>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h4 class="page-header">ユーザ一覧</h4>
+              <form role="form" name="form" method="get">
+              <div class="form-group">
+                <button type="submit" type="button" class="btn btn-outline btn-info btn-sm" formaction="../admin/new">
+                  新規登録
+                </button>
+              </div>
+              </form>
+              <!-- modify login id -->
+              <form role="form" name="form" method="post">
+                <!-- security setting -->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <table style="display:none" width="100%" class="table table-bordered table-hover"
+                 id="targetTable4">
+                <thead>
+                  <tr>
+                    <th class="col-lg-6">ログインID</th>
+                    <th class="col-lg-2">FAQ権限</th>
+                    <th class="col-lg-2">メンテナンス権限</th>
+                    <th class="col-lg-2">管理権限</th>
+                    <th>編集</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    <!-- /page-wrapper -->
+    </div>
+  <!-- /wrapper -->
+  </div>
+  <%- include('./common/commonScriptsTable') %>
+  <%- include('./common/commonScriptsValidate') %>
+</body>
+</html>

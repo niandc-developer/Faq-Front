@@ -1,0 +1,34 @@
+{
+  "name": "Faq-Front",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "config": "^1.28.1",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^1.3.2",
+    "csurf": "^1.9.0",
+    "debug": "^2.6.9",
+    "ejs": "^2.5.7",
+    "encoding-japanese": "^1.0.26",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.1.2",
+    "express-session": "^1.15.6",
+    "helmet": "^3.9.0",
+    "jconv": "^0.1.5",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0",
+    "serve-favicon": "^2.4.5",
+    "validator": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niandc-developer/Faq-Front"
+  },
+  "author": "Nippon Information and Communication Corporation",
+  "license": "Apache-2.0"
+}
