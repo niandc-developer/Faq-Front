@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # FAQデータをWatsonへ登録方法
 - メニューから「アップロード&学習」をクリックして下さい
 
@@ -36,4 +36,4 @@
 ------------------------------------
 ![7](../img/faqRegist/faqRegist_7.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

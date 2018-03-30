@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # 初期QAデータのアップロード方法
 - メニューから「アップロード&学習」をクリックして下さい
 
@@ -39,4 +39,4 @@
 
 ```
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

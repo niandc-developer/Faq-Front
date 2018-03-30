@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 #  パスワード変更
 - サブメニューから「パスワード変更」をクリックして下さい
 
@@ -15,4 +15,4 @@
 ------------------------------------
 ![3](../img/password/password_03.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

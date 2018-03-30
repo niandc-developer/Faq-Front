@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # アカウント登録/削除/権限変更
 ## 登録
 - メニューから「ユーザ」をクリックして下さい
@@ -66,4 +66,4 @@
 ------------------------------------
 ![8](../img/user/user_08.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

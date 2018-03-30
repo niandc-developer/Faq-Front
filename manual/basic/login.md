@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # ログイン
 - ブラウザからFAQサービスのURLにアクセスすると、ログインページが表示されます  
 ``※URLについてはNI+Cよりご連絡したURLにアクセスお願い致します``
@@ -24,4 +24,4 @@
 - 正常にログアウトされるとログイン画面が表示されます
 
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

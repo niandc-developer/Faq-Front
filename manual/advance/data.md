@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # FAQデータについて
 - 本サービスを利用するためにはFAQデータをCSVファイルに変換頂く必要があります。CSVファイルのフォーマットについて以下をご確認下さい
     - ヘッダー情報として「question,answer,url」を記載下さい。ヘッダー以下には「質問」・「回答」・「URL」のデータを「,」(カンマ)区切りで記載します
@@ -15,7 +15,7 @@
 
 - 以下のURLにマウスカーソルを合わせて右クリック、メニューから「名前をつけてリンク先を保存」をクリックする事でファイルを保存できます
 
-[https://raw.githubusercontent.com/solctatg/FAQService_Manual/master/file/qa.csv](https://raw.githubusercontent.com/solctatg/FAQService_Manual/master/file/qa.csv)
+[File](../file/qa.csv)
 
 ** QAデータサンプル例 **
 ```
@@ -29,4 +29,4 @@ question,answer,url
                                         .
 ```
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # FAQ検索
 ## 検索
 - メニューから「FAQ」をクリックして下さい
@@ -43,4 +43,4 @@
 > - Chromeの場合  
 > ![7-2](../img/faq/faq_7_chrome.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

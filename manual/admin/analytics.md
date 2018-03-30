@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # 分析
 ## 利用状況
 - メニューから「分析」をクリックして下さい
@@ -11,4 +11,4 @@
 ------------------------------------
 ![2](../img/analytics/analytics_2.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

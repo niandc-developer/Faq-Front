@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # QAデータの登録/削除/編集/エクスポート/インポート
 ## 登録
 - メニューから「FAQデータ」をクリックして下さい
@@ -116,4 +116,4 @@
 - インポート処理が完了すると、「FAQデータ」ページにインポートしたデータが表示されます
 
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

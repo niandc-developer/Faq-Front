@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # 画面説明
 ## メニュー説明
 
@@ -47,4 +47,4 @@
 |パスワード変更|ログインパスワードの変更を行うページ|
 |ログアウト|ログアウト|
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)

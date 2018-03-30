@@ -1,4 +1,4 @@
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
 # Watsonへ学習開始依頼
 - メニューから「アップロード&学習」をクリックして下さい
 
@@ -30,4 +30,4 @@
 ------------------------------------
 ![6](../img/faqLearning/faqLearning_6.jpg)
 
-[(トップへ戻る)](https://github.com/solctatg/FAQService_Manual)
+[(トップへ戻る)](../)
