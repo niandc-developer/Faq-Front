@@ -1,14 +1,4 @@
 # Faq-Front (NI+C FAQ Web Application)
-
-## Copyright
-
-Copyright 2018 Nippon Information and Communication Corporation
-
-## License
-
-This sample code is licensed under Apache 2.0.
-Full license text is available in [LICENSE](LICENSE).
-
 ## システム図
 ![1](/manual/img/system/system.jpg)
 
@@ -118,3 +108,12 @@ buildpack: SDK for Node.js(TM) (ibm-node.js-6.12.3, buildpack-v3.18-20180206-113
   - 正常にデプロイが完了すると「requested state: started」と表示され、IBM cloudのダッシュボードにアプリケーションが表示されます
     - アプリケーションに接続し、正常に利用できる事を確認して下さい
     - ログインIDとパスワードはFaq-Apiの[manifest.yml の編集](https://github.com/niandc-developer/Faq-Api#manifestyml-%E3%81%AE%E7%B7%A8%E9%9B%86)で設定した、FAQ管理ユーザ名(FAQ_ADMIN_USERNAME)とパスワード(FAQ_ADMIN_PASSWORD)になります
+
+## Copyright
+
+Copyright 2018 Nippon Information and Communication Corporation
+
+## License
+
+This sample code is licensed under Apache 2.0.
+Full license text is available in [LICENSE](LICENSE).
