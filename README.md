@@ -109,6 +109,32 @@ buildpack: SDK for Node.js(TM) (ibm-node.js-6.12.3, buildpack-v3.18-20180206-113
     - アプリケーションに接続し、正常に利用できる事を確認して下さい
     - ログインIDとパスワードはFaq-Apiの[manifest.yml の編集](https://github.com/niandc-developer/Faq-Api#manifestyml-%E3%81%AE%E7%B7%A8%E9%9B%86)で設定した、FAQ管理ユーザ名(FAQ_ADMIN_USERNAME)とパスワード(FAQ_ADMIN_PASSWORD)になります
 
+## Built With
+### UI
+- [SB Admin2](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2)
+- [jQuery Validation Plugin](https://github.com/jquery-validation/jquery-validation)
+- [jQuery Password Strength Meter for Twitter Bootstrap](https://github.com/ablanco/jquery.pwstrength.bootstrap)
+- [DataTables](https://datatables.net/)
+### node.js
+- [body-parser](https://www.npmjs.com/package/body-parser)
+- [compression](https://www.npmjs.com/package/compression)
+- [config](https://www.npmjs.com/package/config)
+- [cookie-parser(https://www.npmjs.com/package/cookie-parser)
+- [cookie-session](https://www.npmjs.com/package/cookie-session)
+- [csurf](https://www.npmjs.com/package/csurf)
+- [debug](https://www.npmjs.com/package/debug)
+- [ejs](https://www.npmjs.com/package/ejs)
+- [encoding-japanese](https://www.npmjs.com/package/encoding-japanese)
+- [express](https://www.npmjs.com/package/express)
+- [express-fileupload](https://www.npmjs.com/package/express-fileupload)
+- [express-session](https://www.npmjs.com/package/express-session)
+- [helmet](https://www.npmjs.com/package/helmet)
+- [jconv]ｌ(https://www.npmjs.com/package/jconv)
+- [morgan](https://www.npmjs.com/package/morgan)
+- [request](https://www.npmjs.com/package/request)
+- [serve-favicon](https://www.npmjs.com/package/serve-favicon)
+- [validator](https://www.npmjs.com/package/validator)
+
 ## Copyright
 
 Copyright 2018 Nippon Information and Communication Corporation
